@@ -5,3 +5,13 @@
     margin: 0;
     padding: 0;
 }
+
+/**
+* Body styling
+*/
+body {
+    background: url(../image/wallpaper.jpeg) no-repeat center fixed;
+    background-size: cover;
+    background-color: black; /* If image is unavailable */
+    color: white;
+}
