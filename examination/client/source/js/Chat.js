@@ -24,12 +24,22 @@ function Chat(container) {
 
 Chat.prototype.connect = function() {
     return new Promise(function(resolve, reject) {
+
+        if (this.socket && this.socket.readyState === 1) {
+            resolve(this.socket);
+            return;
+        }
+
         this.socket = new WebSocket(config.address);
 
         this.socket.addEventListener('open', function() {
             resolve(this.socket);
         }.bind(this));
-        
+
+        this.socket.addEventListener('error', function() {
+            reject(new Error('Could not connect to the server.'));
+        }.bind(this));
+
     }.bind(this));
 
 };
@@ -45,9 +55,10 @@ Chat.prototype.sendMessage = function(text) {
         key: config.key
     };
 
-    this.socket.send(JSON.stringify(data));
-
-    console.log(text);
+    this.connect().then(function(socket) {
+        socket.send(JSON.stringify(data));
+        console.log(text);
+    });
 };
 
 
