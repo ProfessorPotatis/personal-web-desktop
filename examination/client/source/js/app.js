@@ -13,4 +13,6 @@ let Chat = require('./Chat.js');
 
 let chat = new Chat(document.querySelector('#chatContainer'));
 
-chat.connect();
+chat.connect().then(function(socket) {
+    chat.sendMessage('Hello!');
+});
