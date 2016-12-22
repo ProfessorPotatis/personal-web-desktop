@@ -1,6 +1,5 @@
 function playMemory(rows, cols, container) {
 
-    let i;
     let a;
     let tiles = [];
     let turn1;
