@@ -42,7 +42,10 @@ Chat.prototype.connect = function() {
 
         this.socket.addEventListener('message', function(event) {
             let message = JSON.parse(event.data);
-            this.printMessage(message);
+
+            if (message.type === 'message') {
+                this.printMessage(message);
+            }
         }.bind(this));
 
     }.bind(this));
@@ -56,7 +59,7 @@ Chat.prototype.sendMessage = function(text) {
         type: 'message',
         data: text,
         username: 'ProfessorPotatis',
-        channel: 'my, not so secret, channel',
+        //channel: 'my, not so secret, channel',
         key: config.key
     };
 

@@ -12,7 +12,3 @@ memory.playMemory(2, 2, 'memoryContainer');*/
 let Chat = require('./Chat.js');
 
 let chat = new Chat(document.querySelector('#chatContainer'));
-
-/*chat.connect().then(function(socket) {
-    chat.sendMessage('Test!');
-});*/
