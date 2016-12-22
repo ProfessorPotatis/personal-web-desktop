@@ -33,3 +33,26 @@ body {
     font-family: monospace;
     font-weight: bold;
 }
+
+
+/**
+* Chat styling
+*/
+.chat {
+    width: 200px;
+    border: 2px solid white;
+    padding: 5px 5px;
+    font-family: monospace;
+    background-color: black;
+}
+
+.message .author {
+    font-weight: bold;
+    color: cyan;
+}
+
+.chat .messageArea {
+    margin-top: 5px;
+    width: 200px;
+    height: 40px;
+}
