@@ -8,6 +8,9 @@ function playMemory(rows, cols, container) {
     let lastTile;
     let pairs = 0;
     let tries = 0;
+    let seconds;
+    let theTimer = false;
+    let totalTime = 0;
 
     tiles = getPictureArray(rows, cols);
 
@@ -16,6 +19,11 @@ function playMemory(rows, cols, container) {
 
     let div = document.importNode(templateDiv, false);
     let resultTag = document.importNode(templateDiv.firstElementChild.nextElementSibling, true);
+    let timerTag = document.importNode(templateDiv.firstElementChild.nextElementSibling.nextElementSibling, true);
+
+    if (theTimer === false) {
+        seconds = setInterval(timer, 1000);
+    }
 
     tiles.forEach(function(tile, index) {
         a = document.importNode(templateDiv.firstElementChild, true);
@@ -37,7 +45,15 @@ function playMemory(rows, cols, container) {
     });
 
     container.appendChild(resultTag);
+    container.appendChild(timerTag);
     container.appendChild(div);
+
+
+    function timer() {
+        theTimer = true;
+        totalTime += 1;
+        timerTag.textContent = 'Timer: ' + totalTime;
+    }
 
 
     function turnBrick(tile, index, img) {
@@ -65,7 +81,12 @@ function playMemory(rows, cols, container) {
                 pairs += 1;
 
                 if (pairs === (cols*rows)/2) {
-                    let result = document.createTextNode('Won on ' + tries + ' tries.');
+                    if (theTimer === true) {
+                        clearInterval(seconds);
+                        theTimer = false;
+                    }
+                    timerTag.classList.add('removed');
+                    let result = document.createTextNode('Won on ' + tries + ' tries in ' + totalTime + ' seconds.');
                     resultTag.appendChild(result);
                 }
 

@@ -24,11 +24,11 @@ body {
     width: 70px;
 }
 
-.memory .removed {
+.removed {
     visibility: hidden;
 }
 
-.result {
+.result, .timer {
     padding-left: 5px;
     font-family: monospace;
     font-weight: bold;
