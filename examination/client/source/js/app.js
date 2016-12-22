@@ -7,6 +7,4 @@
 
 let memory = require('./Memory.js');
 
-memory.playMemory(2, 4, 'memoryContainer');
-
-memory.playMemory(2, 2);
+memory.playMemory(2, 2, 'memoryContainer');
