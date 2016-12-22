@@ -15,3 +15,21 @@ body {
     background-color: black; /* If image is unavailable */
     color: white;
 }
+
+
+/**
+* Memory styling
+*/
+.memory img {
+    width: 70px;
+}
+
+.memory .removed {
+    visibility: hidden;
+}
+
+.result {
+    padding-left: 5px;
+    font-family: monospace;
+    font-weight: bold;
+}
