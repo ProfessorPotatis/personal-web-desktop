@@ -5,6 +5,6 @@
  * @version 1.0.0
  */
 
-let memory = require('./Memory.js');
+/*let memory = require('./Memory.js');
 
-memory.playMemory(2, 2, 'memoryContainer');
+memory.playMemory(2, 2, 'memoryContainer');*/
