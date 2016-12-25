@@ -7,18 +7,41 @@ function Chat(container) {
 
     this.chatDiv = document.importNode(template.content.firstElementChild, true);
 
-    this.chatDiv.addEventListener('keypress', function(event) {
-        // Listen for Enter key
-        if (event.keyCode === 13) {
-            // Send a message and empty the textarea
-            this.sendMessage(event.target.value);
-            event.target.value = '';
-            event.preventDefault();
+    let user = this.chatDiv.lastElementChild.firstElementChild;
+    let button = this.chatDiv.lastElementChild.lastElementChild;
 
+    container.appendChild(user);
+    container.appendChild(button);
+
+    button.addEventListener('click', function() {
+        let username = user.value;
+
+        if (typeof(Storage) !== 'undefined') {
+            if (username !== '') {
+                localStorage.setItem('username', username);
+
+                user.classList.add('removed');
+                button.classList.add('removed');
+
+                this.chatDiv.addEventListener('keypress', function(event) {
+                    // Listen for Enter key
+                    if (event.keyCode === 13) {
+                        // Send a message and empty the textarea
+                        this.sendMessage(event.target.value);
+                        event.target.value = '';
+                        event.preventDefault();
+
+                    }
+                }.bind(this));
+
+                container.appendChild(this.chatDiv);
+            } else {
+                console.log('You have to choose a username.');
+            }
+        } else {
+            console.log('Sorry, no support for Web Storage.');
         }
     }.bind(this));
-
-    container.appendChild(this.chatDiv);
 }
 
 
@@ -58,7 +81,7 @@ Chat.prototype.sendMessage = function(text) {
     let data = {
         type: 'message',
         data: text,
-        username: 'ProfessorPotatis',
+        username: localStorage.getItem('username'),
         //channel: 'my, not so secret, channel',
         key: config.key
     };
