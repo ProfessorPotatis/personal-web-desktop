@@ -7,42 +7,60 @@ function Chat(container) {
 
     this.chatDiv = document.importNode(template.content.firstElementChild, true);
 
-    let user = this.chatDiv.lastElementChild.firstElementChild;
-    let button = this.chatDiv.lastElementChild.lastElementChild;
+    if (localStorage.getItem('username') === null) {
+        this.setUsername(template, container).then(function() {
+            this.listenForEnter(this.chatDiv, container);
+        }.bind(this));
+    } else {
+        this.listenForEnter(this.chatDiv, container);
+    }
+}
 
-    container.appendChild(user);
-    container.appendChild(button);
 
-    button.addEventListener('click', function() {
-        let username = user.value;
+Chat.prototype.listenForEnter = function(chatDiv, container) {
+    chatDiv.addEventListener('keypress', function(event) {
+        // Listen for Enter key
+        if (event.keyCode === 13) {
+            // Send a message and empty the textarea
+            this.sendMessage(event.target.value);
+            event.target.value = '';
+            event.preventDefault();
 
-        if (typeof(Storage) !== 'undefined') {
-            if (username !== '') {
-                localStorage.setItem('username', username);
-
-                user.classList.add('removed');
-                button.classList.add('removed');
-
-                this.chatDiv.addEventListener('keypress', function(event) {
-                    // Listen for Enter key
-                    if (event.keyCode === 13) {
-                        // Send a message and empty the textarea
-                        this.sendMessage(event.target.value);
-                        event.target.value = '';
-                        event.preventDefault();
-
-                    }
-                }.bind(this));
-
-                container.appendChild(this.chatDiv);
-            } else {
-                console.log('You have to choose a username.');
-            }
-        } else {
-            console.log('Sorry, no support for Web Storage.');
         }
     }.bind(this));
-}
+
+    container.appendChild(chatDiv);
+};
+
+
+Chat.prototype.setUsername = function(template, container) {
+    return new Promise(function(resolve, reject) {
+        let form = document.importNode(template.content.lastElementChild, true);
+        let user = form.firstElementChild;
+        let button = form.lastElementChild;
+
+        container.appendChild(user);
+        container.appendChild(button);
+        console.log(localStorage.getItem('username'));
+
+        button.addEventListener('click', function() {
+            let username = user.value;
+
+            if (typeof(Storage) !== 'undefined') {
+                if (username !== '') {
+                    resolve(localStorage.setItem('username', username));
+
+                    user.classList.add('removed');
+                    button.classList.add('removed');
+                } else {
+                    reject(console.log('You have to choose a username.'));
+                }
+            } else {
+                reject(console.log('Sorry, no support for Web Storage.'));
+            }
+        });
+    });
+};
 
 
 Chat.prototype.connect = function() {
