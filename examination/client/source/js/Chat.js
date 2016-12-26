@@ -1,5 +1,6 @@
 
 let config = require('./config.json');
+let memory = require('./Memory.js');
 
 function Chat(container) {
     this.socket = null;
@@ -107,6 +108,9 @@ Chat.prototype.sendMessage = function(text) {
     };
 
     this.connect().then(function(socket) {
+        if (text === 'play memory') {
+            memory.playMemory(2, 2, 'chatContainer');
+        }
         socket.send(JSON.stringify(data));
         console.log(text);
     });
