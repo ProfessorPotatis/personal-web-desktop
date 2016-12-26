@@ -74,6 +74,7 @@ Chat.prototype.connect = function() {
         this.socket = new WebSocket(config.address);
 
         this.socket.addEventListener('open', function() {
+            console.log('You are connected.');
             resolve(this.socket);
         }.bind(this));
 
@@ -87,6 +88,7 @@ Chat.prototype.connect = function() {
             if (message.type === 'message') {
                 this.printMessage(message);
             }
+
         }.bind(this));
 
     }.bind(this));
