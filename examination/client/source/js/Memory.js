@@ -18,14 +18,17 @@ function playMemory(rows, cols, container) {
 
     let div = document.importNode(templateDiv, false);
     let resultTag = document.importNode(templateDiv.firstElementChild.nextElementSibling, true);
-    let timerTag = document.importNode(templateDiv.firstElementChild.nextElementSibling.nextElementSibling, true);
+    let timerTag = document.importNode(templateDiv.firstElementChild, true);
 
     if (theTimer === false) {
         seconds = setInterval(timer, 1000);
     }
 
+    div.appendChild(resultTag);
+    div.appendChild(timerTag);
+
     tiles.forEach(function(tile, index) {
-        a = document.importNode(templateDiv.firstElementChild, true);
+        a = document.importNode(templateDiv.firstElementChild.nextElementSibling.nextElementSibling, true);
         a.firstElementChild.setAttribute('data-bricknumber', index);
 
         div.appendChild(a);
@@ -43,8 +46,6 @@ function playMemory(rows, cols, container) {
         turnBrick(tiles[index], index, img);
     });
 
-    container.appendChild(resultTag);
-    container.appendChild(timerTag);
     container.appendChild(div);
 
 
