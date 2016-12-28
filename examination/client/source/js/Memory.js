@@ -108,6 +108,7 @@ function playMemory(rows, cols, container) {
             }
         }
     }
+    return container;
 }
 
 

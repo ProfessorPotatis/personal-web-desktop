@@ -5,10 +5,26 @@
  * @version 1.0.0
  */
 
-/*let memory = require('./Memory.js');
+ let menuIcons = document.getElementsByTagName('a');
 
-memory.playMemory(2, 2, 'memoryContainer');*/
+ menuIcons[0].addEventListener('click', function() {
+    console.log('du klickade på memoryappen');
+    let aWindow = require('./Window.js');
+    let theWindow = new aWindow(400, 400, 'memory');
+    theWindow.open();
 
-let Chat = require('./Chat.js');
+    //let memory = require('./Memory.js');
 
-let chat = new Chat(document.querySelector('#chatContainer'));
+    //memory.playMemory(2, 2, 'memoryContainer');
+ });
+
+ menuIcons[1].addEventListener('click', function() {
+    console.log('du klickade på chatappen');
+    let aWindow = require('./Window.js');
+    let theWindow = new aWindow(400, 400, 'chat');
+    theWindow.open();
+
+    //let Chat = require('./Chat.js');
+
+    //let chat = new Chat(document.querySelector('#chatContainer'));
+ });
