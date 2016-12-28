@@ -18,6 +18,22 @@ body {
 
 
 /**
+* Menu styling
+*/
+#menu {
+    text-align: center;
+}
+
+#menu img {
+    width: 70px;
+}
+
+#menu img:hover {
+    width: 80px;
+}
+
+
+/**
 * Memory styling
 */
 .memory img {
