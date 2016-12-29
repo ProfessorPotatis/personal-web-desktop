@@ -48,6 +48,10 @@ body {
     z-index: 0;
 }
 
+.window img {
+    width: 30px;
+}
+
 
 /**
 * Memory styling

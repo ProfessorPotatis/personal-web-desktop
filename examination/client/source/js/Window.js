@@ -19,14 +19,22 @@ newWindow.prototype.open = function() {
 
         let memory = require('./Memory.js');
         let game = memory.playMemory(4, 4);
+        let logo = document.createElement('img');
 
+        logo.setAttribute('src', 'image/memory.png');
+
+        clone.appendChild(logo);
         clone.appendChild(game.lastElementChild);
 
     } else if (this.appName === 'chat') {
 
         let Chat = require('./Chat.js');
         let chat = new Chat(document.querySelector('#chatContainer'));
+        let logo = document.createElement('img');
 
+        logo.setAttribute('src', 'image/chat.png');
+
+        clone.appendChild(logo);
         clone.appendChild(chat.chatDiv);
     }
 
@@ -36,6 +44,11 @@ newWindow.prototype.open = function() {
     this.position(clone);
 
     aWindow.parentNode.appendChild(clone);
+};
+
+
+newWindow.prototype.close = function(theWindow) {
+    aWindow.parentNode.removeChild(theWindow);
 };
 
 
