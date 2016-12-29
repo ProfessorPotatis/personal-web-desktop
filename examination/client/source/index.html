@@ -8,49 +8,52 @@
     </head>
 
     <body>
-        <nav id="menu">
-            <a href="#" id="memoryApp"><img src="image/memory.png" alt="Menu icon for opening a game of memory in a new window"/></a>
-            <a href="#" id="chatApp"><img src="image/chat.png" alt="Menu icon for opening a chat in a new window"/></a>
-        </nav>
+        <div id="wrapper">
+            <nav id="menu">
+                <a href="#" id="memoryApp"><img src="image/memory.png" alt="Menu icon for opening a game of memory in a new window"/></a>
+                <a href="#" id="chatApp"><img src="image/chat.png" alt="Menu icon for opening a chat in a new window"/></a>
+            </nav>
 
 
-        <div class="window" draggable="true">
+            <div class="window" draggable="true">
 
-        </div>
-
-
-        <div id="memoryContainer">
-
-            <template>
-                <div class="memory">
-                    <p class="timer"></p>
-                    <p class="result"></p>
-                    <a href="#"><img src="image/0.png" alt="A memory brick" /></a>
-                <div>
-            </template>
-
-        </div>
+            </div>
 
 
-        <div id="chatContainer">
+            <div id="memoryContainer">
 
-            <template id="chat">
-                <div class="chat">
-                    <div class="messages">
-                        <template>
-                            <div class="message">
-                                <p class="author"></p>
-                                <p class="text"></p>
-                            </div>
-                        </template>
+                <template>
+                    <div class="memory">
+                        <p class="timer"></p>
+                        <p class="result"></p>
+                        <a href="#"><img src="image/0.png" alt="A memory brick" /></a>
+                    <div>
+                </template>
+
+            </div>
+
+
+            <div id="chatContainer">
+
+                <template id="chat">
+                    <div class="chat">
+                        <div class="messages">
+                            <template>
+                                <div class="message">
+                                    <p class="author"></p>
+                                    <p class="text"></p>
+                                </div>
+                            </template>
+                        </div>
+                        <textarea class="messageArea"></textarea>
                     </div>
-                    <textarea class="messageArea"></textarea>
-                </div>
-                <form>
-                    <input type="text" name="username" value="" placeholder="username">
-                    <input type="button" value="Set username" class="button">
-                </form>
-            </template>
+                    <form>
+                        <input type="text" name="username" value="" placeholder="username">
+                        <input type="button" value="Set username" class="button">
+                    </form>
+                </template>
+
+            </div>
 
         </div>
 

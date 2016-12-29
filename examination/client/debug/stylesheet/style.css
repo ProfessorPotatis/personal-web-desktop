@@ -37,14 +37,15 @@ body {
 * Window styling
 */
 .window {
-    position: relative;
-    left: 20px;
-    top: 20px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
     background-color: white;
     color: black;
     display: inline-block;
     border: 2px solid black;
     box-shadow: 2px 2px 2px grey;
+    z-index: 0;
 }
 
 
@@ -84,4 +85,9 @@ body {
     margin-top: 5px;
     width: 200px;
     height: 40px;
+}
+
+
+.active {
+    background-color: #8AB8A4;
 }
