@@ -36,6 +36,17 @@ newWindow.prototype.open = function() {
 
         clone.appendChild(logo);
         clone.appendChild(chat.chatDiv);
+
+    } else if (this.appName === 'about') {
+
+        /*let About = require('./About.js');
+        let chat = new Chat(document.querySelector('#chat'));*/
+        let logo = document.createElement('img');
+
+        logo.setAttribute('src', 'image/about.png');
+
+        clone.appendChild(logo);
+        //clone.appendChild(chat.chatDiv);
     }
 
     clone.setAttribute('id', id);

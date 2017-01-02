@@ -34,6 +34,18 @@ function router() {
                     removeApp('chat');
                 }
                 break;
+            case 'aboutApp':
+                if (clickCount === 1) {
+                    clickTimer = setTimeout(function() {
+                       clickCount = 0;
+                       startApp('about');
+                    }, 200);
+                } else if (clickCount === 2) {
+                    clearTimeout(clickTimer);
+                    clickCount = 0;
+                    removeApp('about');
+                }
+                break;
             default:
 
         }
