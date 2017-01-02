@@ -54,8 +54,18 @@ newWindow.prototype.position = function(clone) {
     clone.style.top = this.windowPosTop + parseInt(clone.id + 5) + 'px';
 
     clone.addEventListener('mousedown', function(event) {
-        this.drag(clone, event);
+        if (event.target.className !== 'messageArea') {
+            this.getFocus(clone);
+            this.drag(clone, event);
+        }
     }.bind(this));
+};
+
+
+newWindow.prototype.getFocus = function(clone) {
+    // Get focus and put window on top
+    let parent = clone.parentNode;
+    parent.appendChild(clone);
 };
 
 

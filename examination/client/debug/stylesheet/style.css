@@ -37,6 +37,7 @@ body {
 * Window styling
 */
 .window {
+    max-height: 400px;
     position: absolute;
     left: 0px;
     top: 0px;
@@ -45,7 +46,7 @@ body {
     display: inline-block;
     border: 2px solid black;
     box-shadow: 2px 2px 2px grey;
-    z-index: 0;
+    overflow: auto;
 }
 
 .window img {
