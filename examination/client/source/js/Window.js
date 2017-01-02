@@ -39,14 +39,14 @@ newWindow.prototype.open = function() {
 
     } else if (this.appName === 'about') {
 
-        /*let About = require('./About.js');
-        let chat = new Chat(document.querySelector('#chat'));*/
+        let about = require('./About.js');
+        let content = about();
         let logo = document.createElement('img');
 
         logo.setAttribute('src', 'image/about.png');
 
         clone.appendChild(logo);
-        //clone.appendChild(chat.chatDiv);
+        clone.appendChild(content);
     }
 
     clone.setAttribute('id', id);
