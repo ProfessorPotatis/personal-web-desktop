@@ -30,7 +30,6 @@ newWindow.prototype.open = function() {
 
         let Chat = require('./Chat.js');
         let chat = new Chat(document.querySelector('#chat'));
-        console.log(chat);
         let logo = document.createElement('img');
 
         logo.setAttribute('src', 'image/chat.png');

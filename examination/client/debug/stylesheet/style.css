@@ -38,6 +38,7 @@ body {
 */
 .window {
     max-height: 400px;
+    max-width: 400px;
     position: absolute;
     left: 0px;
     top: 0px;
@@ -46,11 +47,15 @@ body {
     display: inline-block;
     border: 2px solid black;
     box-shadow: 2px 2px 2px grey;
-    overflow: auto;
+    margin-bottom: 5px;
 }
 
 .window img {
     width: 30px;
+}
+
+.active {
+    background-color: #8AB8A4;
 }
 
 
@@ -76,7 +81,7 @@ body {
 * Chat styling
 */
 .chat {
-    width: 200px;
+    max-height: 200px;
     padding: 5px 5px;
     font-family: monospace;
 }
@@ -86,13 +91,14 @@ body {
     color: cyan;
 }
 
-.chat .messageArea {
-    margin-top: 5px;
-    width: 200px;
-    height: 40px;
+.messages {
+    max-height: 150px;
+    overflow: auto;
+    overflow-x: hidden;
 }
 
-
-.active {
-    background-color: #8AB8A4;
+.chat .messageArea {
+    margin: 5px 0;
+    padding: 5px 5px;
+    height: 40px;
 }

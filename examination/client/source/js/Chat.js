@@ -30,7 +30,6 @@ Chat.prototype.setUsername = function(template, chatDiv) {
         chatDiv.appendChild(button);
         chatDiv.firstElementChild.classList.add('removed');
         chatDiv.firstElementChild.nextElementSibling.classList.add('removed');
-        console.log(localStorage.getItem('username'));
 
         button.addEventListener('click', function() {
             let username = user.value;
