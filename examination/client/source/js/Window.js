@@ -29,7 +29,8 @@ newWindow.prototype.open = function() {
     } else if (this.appName === 'chat') {
 
         let Chat = require('./Chat.js');
-        let chat = new Chat(document.querySelector('#chatContainer'));
+        let chat = new Chat(document.querySelector('#chat'));
+        console.log(chat);
         let logo = document.createElement('img');
 
         logo.setAttribute('src', 'image/chat.png');
@@ -44,11 +45,6 @@ newWindow.prototype.open = function() {
     this.position(clone);
 
     aWindow.parentNode.appendChild(clone);
-};
-
-
-newWindow.prototype.close = function(theWindow) {
-    aWindow.parentNode.removeChild(theWindow);
 };
 
 

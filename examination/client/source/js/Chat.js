@@ -2,46 +2,34 @@
 let config = require('./config.json');
 let aWindow = require('./Window.js');
 
-function Chat(container) {
+function Chat(template) {
     this.socket = null;
-    let template = document.querySelector('#chat');
+    template = template || document.querySelector('#chat');
 
     this.chatDiv = document.importNode(template.content.firstElementChild, true);
 
     if (localStorage.getItem('username') === null) {
-        this.setUsername(template, container).then(function() {
-            this.listenForEnter(this.chatDiv, container);
+        this.setUsername(template, this.chatDiv).then(function() {
+            this.chatDiv.firstElementChild.classList.remove('removed');
+            this.chatDiv.firstElementChild.nextElementSibling.classList.remove('removed');
+            this.listenForEnter(this.chatDiv);
         }.bind(this));
     } else {
-        this.listenForEnter(this.chatDiv, container);
+        this.listenForEnter(this.chatDiv);
     }
 }
 
 
-Chat.prototype.listenForEnter = function(chatDiv, container) {
-    chatDiv.addEventListener('keypress', function(event) {
-        // Listen for Enter key
-        if (event.keyCode === 13) {
-            // Send a message and empty the textarea
-            this.sendMessage(event.target.value);
-            event.target.value = '';
-            event.preventDefault();
-
-        }
-    }.bind(this));
-
-    container.appendChild(chatDiv);
-};
-
-
-Chat.prototype.setUsername = function(template, container) {
+Chat.prototype.setUsername = function(template, chatDiv) {
     return new Promise(function(resolve, reject) {
         let form = document.importNode(template.content.lastElementChild, true);
         let user = form.firstElementChild;
         let button = form.lastElementChild;
 
-        container.appendChild(user);
-        container.appendChild(button);
+        chatDiv.appendChild(user);
+        chatDiv.appendChild(button);
+        chatDiv.firstElementChild.classList.add('removed');
+        chatDiv.firstElementChild.nextElementSibling.classList.add('removed');
         console.log(localStorage.getItem('username'));
 
         button.addEventListener('click', function() {
@@ -61,6 +49,20 @@ Chat.prototype.setUsername = function(template, container) {
             }
         });
     });
+};
+
+
+Chat.prototype.listenForEnter = function(chatDiv) {
+    chatDiv.addEventListener('keypress', function(event) {
+        // Listen for Enter key
+        if (event.keyCode === 13) {
+            // Send a message and empty the textarea
+            this.sendMessage(event.target.value);
+            event.target.value = '';
+            event.preventDefault();
+
+        }
+    }.bind(this));
 };
 
 
