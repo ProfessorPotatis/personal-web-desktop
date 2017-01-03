@@ -3,9 +3,6 @@ function Video() {
     let template = document.querySelector('#video');
     let content = document.importNode(template.content.firstElementChild, true);
     let video = content.firstElementChild;
-    console.log(content);
-    console.log(video);
-
 
     navigator.getUserMedia = navigator.getUserMedia ||
                              navigator.webkitGetUserMedia ||
@@ -13,7 +10,7 @@ function Video() {
                              navigator.msGetUserMedia;
 
     if (navigator.getUserMedia) {
-        navigator.getUserMedia({ audio: true, video: true },
+        navigator.getUserMedia({ audio: true, video: { width: 1280, height: 720 } },
             function(stream) {
                 video.srcObject = stream;
                 video.onloadedmetadata = function() {
@@ -28,25 +25,7 @@ function Video() {
         console.log('getUserMedia not supported');
     }
 
-
-
-
-    /*function hasGetUserMedia() {
-        return !!(navigator.getUserMedia || navigator.webkitGetUserMedia ||
-                  navigator.mozGetUserMedia || navigator.msGetUserMedia);
-    }
-
-    if (hasGetUserMedia()) {
-        console.log('Good to go!');
-
-
-    } else {
-        alert('getUserMedia() is not supported in your browser');
-    }*/
-
-
     return content;
-
 }
 
 
