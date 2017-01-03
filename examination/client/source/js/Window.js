@@ -52,7 +52,6 @@ newWindow.prototype.open = function() {
 
         let video = require('./Video.js');
         let content = video();
-        console.log(content);
         let logo = document.createElement('img');
 
         logo.setAttribute('src', 'image/video.png');

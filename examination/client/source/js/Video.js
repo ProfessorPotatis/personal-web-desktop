@@ -6,36 +6,48 @@ function Video() {
     console.log(content);
     console.log(video);
 
-    if (navigator.getUserMedia) {
-        console.log('Good to go!');
-        let errorCallback = function(e) {
-            console.log('Rejected!', e);
-        };
 
-    navigator.getUserMedia  = navigator.getUserMedia ||
-                              navigator.webkitGetUserMedia ||
-                              navigator.mozGetUserMedia ||
-                              navigator.msGetUserMedia;
-
+    navigator.getUserMedia = navigator.getUserMedia ||
+                             navigator.webkitGetUserMedia ||
+                             navigator.mozGetUserMedia ||
+                             navigator.msGetUserMedia;
 
     if (navigator.getUserMedia) {
-        navigator.getUserMedia({audio: true, video: true}, function(stream) {
-        this.video.src = window.URL.createObjectURL(stream);
-        }, errorCallback);
+        navigator.getUserMedia({ audio: true, video: true },
+            function(stream) {
+                video.srcObject = stream;
+                video.onloadedmetadata = function() {
+                    video.play();
+                };
+            },
+            function(err) {
+                console.log('The following error occurred: ' + err.name);
+            }
+        );
     } else {
-        this.video.src = 'somevideo.webm'; // fallback.
+        console.log('getUserMedia not supported');
     }
+
+
+
+
+    /*function hasGetUserMedia() {
+        return !!(navigator.getUserMedia || navigator.webkitGetUserMedia ||
+                  navigator.mozGetUserMedia || navigator.msGetUserMedia);
+    }
+
+    if (hasGetUserMedia()) {
+        console.log('Good to go!');
+
 
     } else {
         alert('getUserMedia() is not supported in your browser');
-    }
+    }*/
+
+
+    return content;
+
 }
-
-
-Video.prototype.hasGetUserMedia = function() {
-    return !!(navigator.getUserMedia || navigator.webkitGetUserMedia ||
-        navigator.mozGetUserMedia || navigator.msGetUserMedia);
-};
 
 
 module.exports = Video;
