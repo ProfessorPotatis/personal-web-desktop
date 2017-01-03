@@ -112,9 +112,19 @@ Chat.prototype.sendMessage = function(text) {
         if (text === 'play memory') {
             let theWindow = new aWindow(400, 400, 'memory');
             theWindow.open();
+        } else if (text === 'start a new chat') {
+            let theWindow = new aWindow(400, 400, 'chat');
+            theWindow.open();
+        } else if (text === 'start video') {
+            let theWindow = new aWindow(400, 400, 'video');
+            theWindow.open();
+        } else if (text === 'read about page') {
+            let theWindow = new aWindow(400, 400, 'about');
+            theWindow.open();
+        } else {
+            socket.send(JSON.stringify(data));
+            console.log(text);
         }
-        socket.send(JSON.stringify(data));
-        console.log(text);
     });
 };
 

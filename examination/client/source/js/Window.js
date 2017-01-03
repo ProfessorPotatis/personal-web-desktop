@@ -19,44 +19,36 @@ newWindow.prototype.open = function() {
 
         let memory = require('./Memory.js');
         let game = memory.playMemory(4, 4);
-        let logo = document.createElement('img');
 
-        logo.setAttribute('src', 'image/memory.png');
+        this.setLogoAndName(this.appName, clone);
 
-        clone.appendChild(logo);
         clone.appendChild(game.lastElementChild);
 
     } else if (this.appName === 'chat') {
 
         let Chat = require('./Chat.js');
         let chat = new Chat(document.querySelector('#chat'));
-        let logo = document.createElement('img');
 
-        logo.setAttribute('src', 'image/chat.png');
+        this.setLogoAndName(this.appName, clone);
 
-        clone.appendChild(logo);
         clone.appendChild(chat.chatDiv);
 
     } else if (this.appName === 'about') {
 
         let about = require('./About.js');
         let content = about();
-        let logo = document.createElement('img');
 
-        logo.setAttribute('src', 'image/about.png');
+        this.setLogoAndName(this.appName, clone);
 
-        clone.appendChild(logo);
         clone.appendChild(content);
 
     } else if (this.appName === 'video') {
 
         let video = require('./Video.js');
         let content = video();
-        let logo = document.createElement('img');
 
-        logo.setAttribute('src', 'image/video.png');
+        this.setLogoAndName(this.appName, clone);
 
-        clone.appendChild(logo);
         clone.appendChild(content);
     }
 
@@ -66,6 +58,20 @@ newWindow.prototype.open = function() {
     this.position(clone);
 
     aWindow.parentNode.appendChild(clone);
+};
+
+
+newWindow.prototype.setLogoAndName = function(appName, theWindow) {
+    let logo = document.createElement('img');
+    logo.setAttribute('src', 'image/' + appName + '.png');
+
+    let h3 = document.createElement('h3');
+    let name = document.createTextNode(' ' + appName.toUpperCase());
+
+    h3.appendChild(name);
+
+    theWindow.appendChild(logo);
+    theWindow.appendChild(h3);
 };
 
 

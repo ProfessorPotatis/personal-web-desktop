@@ -46,12 +46,18 @@ body {
     color: black;
     display: inline-block;
     border: 2px solid black;
+    border-radius: 5px;
     box-shadow: 2px 2px 2px grey;
     margin-bottom: 5px;
 }
 
 .window img {
     width: 30px;
+}
+
+.window h3 {
+    display: inline;
+    margin-top: -5px;
 }
 
 .active {
@@ -118,6 +124,7 @@ body {
 */
 .about {
     padding: 5px;
+    display: block;
 }
 
 
