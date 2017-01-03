@@ -119,3 +119,40 @@ body {
 .about {
     padding: 5px;
 }
+
+
+
+
+video {
+  width: 307px;
+  height: 250px;
+  background: rgba(255,255,255,0.5);
+  border: 1px solid #ccc;
+}
+.pinkish {
+  filter: brightness(1) sepia(8) contrast(300%) blur(0.4px) invert(.2) hue-rotate(300deg);
+}
+.grayscale {
+  filter: grayscale(5);
+}
+.sepia {
+  filter: sepia(3);
+}
+.blur {
+  filter: blur(3px);
+}
+.saturate {
+    filter: saturate(8);
+}
+.huerotate {
+    filter: hue-rotate(90deg);
+}
+.invert {
+    filter: invert(.8);
+}
+.brightness {
+    filter: brightness(3);
+}
+.contrast {
+    filter: contrast(3);
+}

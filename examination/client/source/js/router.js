@@ -46,6 +46,18 @@ function router() {
                     removeApp('about');
                 }
                 break;
+            case 'streamApp':
+                if (clickCount === 1) {
+                    clickTimer = setTimeout(function() {
+                       clickCount = 0;
+                       startApp('video');
+                    }, 200);
+                } else if (clickCount === 2) {
+                    clearTimeout(clickTimer);
+                    clickCount = 0;
+                    removeApp('video');
+                }
+                break;
             default:
 
         }

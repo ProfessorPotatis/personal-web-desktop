@@ -47,6 +47,18 @@ newWindow.prototype.open = function() {
 
         clone.appendChild(logo);
         clone.appendChild(content);
+
+    } else if (this.appName === 'video') {
+
+        let video = require('./Video.js');
+        let content = video();
+        console.log(content);
+        let logo = document.createElement('img');
+
+        logo.setAttribute('src', 'image/video.png');
+
+        clone.appendChild(logo);
+        clone.appendChild(content);
     }
 
     clone.setAttribute('id', id);
