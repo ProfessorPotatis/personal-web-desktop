@@ -151,26 +151,26 @@ video {
   filter: brightness(1) sepia(8) contrast(300%) blur(0.4px) invert(.2) hue-rotate(300deg);
 }
 .grayscale {
-  filter: grayscale(5);
+  filter: grayscale(100%);
 }
 .sepia {
-  filter: sepia(3);
+  filter: sepia(100%);
 }
 .blur {
-  filter: blur(3px);
+  filter: blur(5px);
 }
 .saturate {
-    filter: saturate(8);
+    filter: saturate(5);
 }
 .huerotate {
     filter: hue-rotate(90deg);
 }
 .invert {
-    filter: invert(.8);
+    filter: invert(100%);
 }
 .brightness {
-    filter: brightness(3);
+    filter: brightness(150%);
 }
 .contrast {
-    filter: contrast(3);
+    filter: contrast(200%);
 }

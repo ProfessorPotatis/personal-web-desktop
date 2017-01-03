@@ -3,6 +3,9 @@ function Video() {
     let template = document.querySelector('#video');
     let content = document.importNode(template.content.firstElementChild, true);
     let video = content.firstElementChild;
+    let button = content.lastElementChild;
+    let classArr = ['pinkish', 'grayscale', 'sepia', 'blur', 'saturate', 'huerotate', 'invert', 'brightness', 'contrast'];
+    let clickCount = 0;
 
     navigator.getUserMedia = navigator.getUserMedia ||
                              navigator.webkitGetUserMedia ||
@@ -16,6 +19,15 @@ function Video() {
                 video.onloadedmetadata = function() {
                     video.play();
                 };
+                button.addEventListener('click', function() {
+                    if (clickCount === 9) {
+                        clickCount = 0;
+                    }
+
+                    video.setAttribute('class', classArr[clickCount]);
+                    clickCount += 1;
+                    console.log(clickCount);
+                });
             },
             function(err) {
                 console.log('The following error occurred: ' + err.name);
