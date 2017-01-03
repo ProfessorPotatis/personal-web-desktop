@@ -93,6 +93,10 @@ body {
     font-family: monospace;
 }
 
+.chat input {
+    z-index: 1;
+}
+
 .message .author {
     font-weight: bold;
     color: cyan;

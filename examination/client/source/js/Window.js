@@ -81,7 +81,8 @@ newWindow.prototype.position = function(clone) {
     clone.style.top = this.windowPosTop + parseInt(clone.id + 5) + 'px';
 
     clone.addEventListener('mousedown', function(event) {
-        if (event.target.className !== 'messageArea') {
+        console.log(event.target.name);
+        if (!event.target.classList.contains('noMove')) {
             this.getFocus(clone);
             this.drag(clone, event);
         }
