@@ -1,5 +1,5 @@
 
-let aWindow, id = 0, memory = require('./Memory.js'), Chat = require('./Chat.js'),
+let aWindow, id = 0, content, memory = require('./Memory.js'), Chat = require('./Chat.js'),
 about = require('./About.js'), video = require('./Video.js');
 
 function newWindow(width, height, appName) {
@@ -18,39 +18,35 @@ newWindow.prototype.open = function() {
 
     if (this.appName === 'memory') {
         let game = memory.playMemory(4, 4);
+        content = game.lastElementChild;
 
         this.setLogoAndName(this.appName, clone);
         this.closeW(clone);
-
-        clone.appendChild(game.lastElementChild);
 
     } else if (this.appName === 'chat') {
         let chat = new Chat(document.querySelector('#chat'));
+        content = chat.chatDiv;
 
         this.setLogoAndName(this.appName, clone);
         this.closeW(clone);
-
-        clone.appendChild(chat.chatDiv);
 
     } else if (this.appName === 'about') {
-        let content = about();
+        content = about();
 
         this.setLogoAndName(this.appName, clone);
         this.closeW(clone);
-
-        clone.appendChild(content);
 
     } else if (this.appName === 'video') {
-        let content = video();
+        content = video();
 
         this.setLogoAndName(this.appName, clone);
         this.closeW(clone);
-
-        clone.appendChild(content);
     }
 
     clone.setAttribute('id', id);
     id += 1;
+
+    clone.appendChild(content);
 
     this.position(clone);
 
