@@ -56,13 +56,14 @@ function playMemory(rows, cols, container) {
     container.appendChild(div);
 
 
+    // Timer.
     function timer() {
         theTimer = true;
         totalTime += 1;
         timerTag.textContent = 'Timer: ' + totalTime;
     }
 
-
+    // Turning clicked brick.
     function turnBrick(tile, index, img) {
         if (turn2) {
             return;
@@ -119,7 +120,7 @@ function playMemory(rows, cols, container) {
     return container;
 }
 
-
+// Randomise picture array.
 function getPictureArray(rows, cols) {
     let i;
     let arr = [];

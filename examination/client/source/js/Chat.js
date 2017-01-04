@@ -8,6 +8,9 @@
 let config = require('./config.json');
 let aWindow = require('./Window.js');
 
+/**
+ * Constructor for new chat.
+ */
 function Chat(template) {
     this.socket = null;
     template = template || document.querySelector('#chat');
@@ -25,7 +28,9 @@ function Chat(template) {
     }
 }
 
-
+/**
+ * Saves username in localStorage.
+ */
 Chat.prototype.setUsername = function(template, chatDiv) {
     return new Promise(function(resolve, reject) {
         let form = document.importNode(template.content.lastElementChild, true);
@@ -56,7 +61,9 @@ Chat.prototype.setUsername = function(template, chatDiv) {
     });
 };
 
-
+/**
+ * Waiting for enter-key to be pressed.
+ */
 Chat.prototype.listenForEnter = function(chatDiv) {
     chatDiv.addEventListener('keypress', function(event) {
         // Listen for Enter key
@@ -70,7 +77,9 @@ Chat.prototype.listenForEnter = function(chatDiv) {
     }.bind(this));
 };
 
-
+/**
+ * Connect to WebSocket server.
+ */
 Chat.prototype.connect = function() {
     return new Promise(function(resolve, reject) {
 
@@ -103,7 +112,9 @@ Chat.prototype.connect = function() {
 
 };
 
-
+/**
+ * Send message in JSON.
+ */
 Chat.prototype.sendMessage = function(text) {
 
     let data = {
@@ -114,6 +125,7 @@ Chat.prototype.sendMessage = function(text) {
         key: config.key
     };
 
+    // FEATURE: Chat works as command line for Personal Web Desktop.
     this.connect().then(function(socket) {
         if (text === 'play memory') {
             let theWindow = new aWindow(400, 400, 'memory');
@@ -134,7 +146,9 @@ Chat.prototype.sendMessage = function(text) {
     });
 };
 
-
+/**
+ * Print out recieved messages.
+ */
 Chat.prototype.printMessage = function(message) {
     let template = this.chatDiv.querySelectorAll('template')[0];
 

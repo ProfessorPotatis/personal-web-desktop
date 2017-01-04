@@ -9,17 +9,23 @@
 let aWindow, id = 0, content, memory = require('./Memory.js'), Chat = require('./Chat.js'),
 about = require('./About.js'), video = require('./Video.js');
 
+/**
+ * Constructor for new window.
+ */
 function newWindow(width, height, appName) {
     this.width = width;
     this.height = height;
     this.appName = appName;
-    this.windowPosTop = 0;
+    this.windowPosTop = 70;
     this.windowPosLeft = 0;
 
     aWindow = document.getElementsByClassName('window')[0];
 
 }
 
+/**
+ * Clones and opens app window.
+ */
 newWindow.prototype.open = function() {
     let clone = aWindow.cloneNode(true);
 
@@ -60,7 +66,9 @@ newWindow.prototype.open = function() {
     aWindow.parentNode.appendChild(clone);
 };
 
-
+/**
+ * Sets logo and name on app window.
+ */
 newWindow.prototype.setLogoAndName = function(appName, theWindow) {
     let logo = document.createElement('img');
     logo.setAttribute('src', 'image/' + appName + '.png');
@@ -74,7 +82,9 @@ newWindow.prototype.setLogoAndName = function(appName, theWindow) {
     theWindow.appendChild(h3);
 };
 
-
+/**
+ * Attaches a closebutton (X) and closes app window.
+ */
 newWindow.prototype.closeW = function(clone) {
     let closeButton = document.createElement('input');
     closeButton.setAttribute('type', 'button');
@@ -88,7 +98,9 @@ newWindow.prototype.closeW = function(clone) {
     clone.appendChild(closeButton);
 };
 
-
+/**
+ * Positions app window on opening.
+ */
 newWindow.prototype.position = function(clone) {
 
     clone.style.left = this.windowPosLeft + parseInt(clone.id + 5) + 'px';
@@ -102,14 +114,18 @@ newWindow.prototype.position = function(clone) {
     }.bind(this));
 };
 
-
+/**
+ * Focus and puts app window on top.
+ */
 newWindow.prototype.getFocus = function(clone) {
     // Get focus and put window on top
     let parent = clone.parentNode;
     parent.appendChild(clone);
 };
 
-
+/**
+ * Drag and drop app window.
+ */
 newWindow.prototype.drag = function(element, event) {
     let startX = event.clientX, startY = event.clientY;
     let origX = element.offsetLeft, origY = element.offsetTop;
@@ -128,7 +144,7 @@ newWindow.prototype.drag = function(element, event) {
         event.preventDefault();
     }
 
-
+    // Moves app window.
     function move(e) {
         if (!e) {
             e = window.event;
@@ -142,6 +158,7 @@ newWindow.prototype.drag = function(element, event) {
         element.style.top = (e.clientY - deltaY) + 'px';
     }
 
+    // Releases app window.
     function release(e) {
         if (!e) {
             e = window.event;

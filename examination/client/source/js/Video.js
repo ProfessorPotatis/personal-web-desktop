@@ -25,8 +25,10 @@ function Video() {
                 video.onloadedmetadata = function() {
                     video.play();
                 };
+
+                // Change filter on video.
                 button.addEventListener('click', function() {
-                    if (clickCount === 10) {
+                    if (clickCount === classArr.length) {
                         clickCount = 0;
                     }
 

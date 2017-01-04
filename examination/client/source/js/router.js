@@ -10,6 +10,10 @@ function router() {
     let clickCount = 0;
     let clickTimer;
 
+     /**
+     * Single click on menu opens new app window.
+     * Double click on menu closes app window.
+     */
     menu.addEventListener('click', function(event) {
         clickCount += 1;
 
@@ -69,12 +73,14 @@ function router() {
         }
     });
 
+    // Creates new window and opens app.
     function startApp(app) {
         let aWindow = require('./Window.js');
         let theWindow = new aWindow(400, 400, app);
         theWindow.open();
     }
 
+    // Removes app windows.
     function removeApp(app) {
         let windows = document.getElementsByClassName('window');
 
