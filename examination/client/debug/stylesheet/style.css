@@ -127,32 +127,8 @@ body {
 
 
 /**
-* About styling
+* Video styling
 */
-.about {
-    padding: 5px;
-    display: block;
-}
-
-
-/**
-* Button styling
-*/
-.button {
-    background-color: white;
-    color: black;
-    border: 1px solid grey;
-    border-radius: 5px;
-    box-shadow: 1px 1px 1px;
-    margin: 0 5px 5px 5px;
-    float: right;
-}
-.button:hover {
-    background-color: black;
-    color: white;
-}
-
-
 video {
   width: 320px;
   height: 180px;
@@ -187,4 +163,31 @@ video {
 }
 .contrast {
     filter: contrast(200%);
+}
+
+
+/**
+* About styling
+*/
+.about {
+    padding: 5px;
+    display: block;
+}
+
+
+/**
+* Button styling
+*/
+.button {
+    background-color: white;
+    color: black;
+    border: 1px solid grey;
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px;
+    margin: 0 5px 5px 5px;
+    float: right;
+}
+.button:hover {
+    background-color: black;
+    color: white;
 }
