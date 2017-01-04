@@ -1,3 +1,9 @@
+/**
+ * Module for video.
+ *
+ * @author ProfessorPotatis
+ * @version 1.0.0
+ */
 
 function Video() {
     let template = document.querySelector('#video');
@@ -39,5 +45,7 @@ function Video() {
     return content;
 }
 
-
+/**
+*  Exports.
+*/
 module.exports = Video;

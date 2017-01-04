@@ -1,3 +1,9 @@
+/**
+ * Module for router.
+ *
+ * @author ProfessorPotatis
+ * @version 1.0.0
+ */
 
 function router() {
     let menu = document.getElementById('menu');
@@ -80,4 +86,7 @@ function router() {
     }
 }
 
+/**
+*  Exports.
+*/
 module.exports = router;

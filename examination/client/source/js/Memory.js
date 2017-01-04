@@ -1,3 +1,10 @@
+/**
+ * Module for memory.
+ *
+ * @author ProfessorPotatis
+ * @version 1.0.0
+ */
+
 function playMemory(rows, cols, container) {
 
     let a;
@@ -132,7 +139,9 @@ function getPictureArray(rows, cols) {
     return arr;
 }
 
-
+/**
+*  Exports.
+*/
 module.exports = {
     playMemory: playMemory,
     shuffle: getPictureArray

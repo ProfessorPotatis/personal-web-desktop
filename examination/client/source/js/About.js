@@ -1,3 +1,9 @@
+/**
+ * Module for about.
+ *
+ * @author ProfessorPotatis
+ * @version 1.0.0
+ */
 
 function about() {
     let template = document.querySelector('#about');
@@ -6,4 +12,7 @@ function about() {
     return content;
 }
 
+/**
+*  Exports.
+*/
 module.exports = about;

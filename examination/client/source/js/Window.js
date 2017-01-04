@@ -1,3 +1,10 @@
+/**
+ * Module for window.
+ *
+ * @author ProfessorPotatis
+ * @version 1.0.0
+ */
+
 
 let aWindow, id = 0, content, memory = require('./Memory.js'), Chat = require('./Chat.js'),
 about = require('./About.js'), video = require('./Video.js');
@@ -155,4 +162,7 @@ newWindow.prototype.drag = function(element, event) {
     }
 };
 
+/**
+*  Exports.
+*/
 module.exports = newWindow;

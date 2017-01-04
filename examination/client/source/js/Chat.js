@@ -1,3 +1,9 @@
+/**
+ * Module for chat.
+ *
+ * @author ProfessorPotatis
+ * @version 1.0.0
+ */
 
 let config = require('./config.json');
 let aWindow = require('./Window.js');
@@ -140,4 +146,7 @@ Chat.prototype.printMessage = function(message) {
     this.chatDiv.querySelectorAll('.messages')[0].appendChild(messageDiv);
 };
 
+/**
+*  Exports.
+*/
 module.exports = Chat;
