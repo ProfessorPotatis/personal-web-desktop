@@ -4,7 +4,7 @@ function Video() {
     let content = document.importNode(template.content.firstElementChild, true);
     let video = content.firstElementChild;
     let button = content.lastElementChild;
-    let classArr = ['pinkish', 'grayscale', 'sepia', 'blur', 'saturate', 'huerotate', 'invert', 'brightness', 'contrast'];
+    let classArr = ['pinkish', 'grayscale', 'sepia', 'blur', 'saturate', 'huerotate', 'invert', 'brightness', 'contrast', ''];
     let clickCount = 0;
 
     navigator.getUserMedia = navigator.getUserMedia ||
@@ -20,13 +20,12 @@ function Video() {
                     video.play();
                 };
                 button.addEventListener('click', function() {
-                    if (clickCount === 9) {
+                    if (clickCount === 10) {
                         clickCount = 0;
                     }
 
                     video.setAttribute('class', classArr[clickCount]);
                     clickCount += 1;
-                    console.log(clickCount);
                 });
             },
             function(err) {

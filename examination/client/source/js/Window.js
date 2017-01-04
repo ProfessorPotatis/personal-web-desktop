@@ -1,5 +1,6 @@
 
-let aWindow, id = 0;
+let aWindow, id = 0, memory = require('./Memory.js'), Chat = require('./Chat.js'),
+about = require('./About.js'), video = require('./Video.js');
 
 function newWindow(width, height, appName) {
     this.width = width;
@@ -16,38 +17,34 @@ newWindow.prototype.open = function() {
     let clone = aWindow.cloneNode(true);
 
     if (this.appName === 'memory') {
-
-        let memory = require('./Memory.js');
         let game = memory.playMemory(4, 4);
 
         this.setLogoAndName(this.appName, clone);
+        this.closeW(clone);
 
         clone.appendChild(game.lastElementChild);
 
     } else if (this.appName === 'chat') {
-
-        let Chat = require('./Chat.js');
         let chat = new Chat(document.querySelector('#chat'));
 
         this.setLogoAndName(this.appName, clone);
+        this.closeW(clone);
 
         clone.appendChild(chat.chatDiv);
 
     } else if (this.appName === 'about') {
-
-        let about = require('./About.js');
         let content = about();
 
         this.setLogoAndName(this.appName, clone);
+        this.closeW(clone);
 
         clone.appendChild(content);
 
     } else if (this.appName === 'video') {
-
-        let video = require('./Video.js');
         let content = video();
 
         this.setLogoAndName(this.appName, clone);
+        this.closeW(clone);
 
         clone.appendChild(content);
     }
@@ -75,13 +72,26 @@ newWindow.prototype.setLogoAndName = function(appName, theWindow) {
 };
 
 
+newWindow.prototype.closeW = function(clone) {
+    let closeButton = document.createElement('input');
+    closeButton.setAttribute('type', 'button');
+    closeButton.setAttribute('value', 'X');
+    closeButton.setAttribute('class', 'button');
+
+    closeButton.addEventListener('click', function(event) {
+        aWindow.parentNode.removeChild(event.target.parentNode);
+    });
+
+    clone.appendChild(closeButton);
+};
+
+
 newWindow.prototype.position = function(clone) {
 
     clone.style.left = this.windowPosLeft + parseInt(clone.id + 5) + 'px';
     clone.style.top = this.windowPosTop + parseInt(clone.id + 5) + 'px';
 
     clone.addEventListener('mousedown', function(event) {
-        console.log(event.target.name);
         if (!event.target.classList.contains('noMove')) {
             this.getFocus(clone);
             this.drag(clone, event);

@@ -99,13 +99,16 @@ body {
 
 .message .author {
     font-weight: bold;
-    color: cyan;
+    color: black;
 }
 
 .messages {
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    padding: 5px;
     position: absolute;
-    width: 245px;
-    left: 10px;
+    width: 240px;
+    left: 5px;
     right: 10px;
     top: 50px;
     bottom: 70px;
