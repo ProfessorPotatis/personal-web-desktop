@@ -6,7 +6,6 @@
  */
 
 let config = require('./config.json');
-let aWindow = require('./Window.js');
 
 /**
  * Constructor for new chat.
@@ -116,6 +115,7 @@ Chat.prototype.connect = function() {
  * Send message in JSON.
  */
 Chat.prototype.sendMessage = function(text) {
+    let aWindow = require('./Window.js');
 
     let data = {
         type: 'message',
